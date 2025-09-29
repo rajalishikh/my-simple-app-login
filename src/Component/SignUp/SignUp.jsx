@@ -1,11 +1,15 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { IoMdEyeOff } from "react-icons/io";
+import { IoEye } from "react-icons/io5";
 import { auth } from "../../Firebase/Firebase";
 
 const SignUp = () => {
 
     const [error,setError]=useState('')
     const [success,setSuccess]=useState(false)
+    const [showPassword,setShowPassword]=useState(false)
+   
     const handleSignUp=(e)=>{
         e.preventDefault()
         const email=e.target.email.value 
@@ -14,7 +18,7 @@ const SignUp = () => {
 
         setError("")
         setSuccess(false)
-         const regularExpreson= /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/ 
+         
 
          if(/(?=.*\d)/.test(password)=== false){
           setError("Must be one digit")
@@ -54,7 +58,18 @@ const SignUp = () => {
         <div className="space-y-4">
           
           <input name="email" type="email" className="input" placeholder="Email" /><br />
-          <input name="password" type="password" className="input" placeholder="Password" />
+          <div className="relative">
+            <input name="password" type={showPassword ? "text" : "password" } className="input" placeholder="Password" />
+            <button onClick={()=>setShowPassword(!showPassword)} className="absolute top-2 right-6">
+              {
+                showPassword?<IoEye />:<IoMdEyeOff />
+              }
+              
+            </button>
+
+          </div>
+          
+          
           <div><a className="link link-hover">Forgot password?</a></div>
           <div className="flex justify-center">
              <input className="btn btn-success " type="submit" value="Submit" />
