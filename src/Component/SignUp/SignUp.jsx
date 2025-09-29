@@ -14,11 +14,15 @@ const SignUp = () => {
         e.preventDefault()
         const email=e.target.email.value 
         const password=e.target.password.value
-        console.log(password)
+        const terms=e.target.terms.checked 
+        console.log(password,terms)
 
         setError("")
         setSuccess(false)
-         
+         if(terms === false){
+          setError("Please accept our condition")
+          return
+         }
 
          if(/(?=.*\d)/.test(password)=== false){
           setError("Must be one digit")
@@ -68,7 +72,13 @@ const SignUp = () => {
             </button>
 
           </div>
-          
+          <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+ 
+  <label className="label">
+    <input type="checkbox" name="terms" className="checkbox" />
+    Accept Our Condition 
+  </label>
+</fieldset>
           
           <div><a className="link link-hover">Forgot password?</a></div>
           <div className="flex justify-center">
