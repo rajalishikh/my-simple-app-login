@@ -5,14 +5,19 @@ import { auth } from "../../Firebase/Firebase";
 const SignUp = () => {
 
     const [error,setError]=useState('')
+    const [success,setSuccess]=useState(false)
     const handleSignUp=(e)=>{
         e.preventDefault()
         const email=e.target.email.value 
         const password=e.target.password.value
+        setError("")
+        setSuccess(false)
         createUserWithEmailAndPassword(auth, email, password)
+        
   .then((userCredential) => {
     // Signed up 
     console.log(userCredential)
+    setSuccess(true)
     // ...
   })
   .catch((error) => {
@@ -40,6 +45,9 @@ const SignUp = () => {
         </form>
         {
             error&&<p className="text-red-600">{error}</p>
+        }
+        {
+          success && <p className="text-green-500 text-center">SignUp successFully complete </p>
         }
             
             
