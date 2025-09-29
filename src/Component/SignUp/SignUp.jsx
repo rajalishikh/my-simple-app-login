@@ -10,8 +10,27 @@ const SignUp = () => {
         e.preventDefault()
         const email=e.target.email.value 
         const password=e.target.password.value
+        console.log(password)
+
         setError("")
         setSuccess(false)
+         const regularExpreson= /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/ 
+
+         if(/(?=.*\d)/.test(password)=== false){
+          setError("Must be one digit")
+          return;
+         }else if(/(?=.{6,})/.test(password) === false){
+          setError("Must be 6 character")
+          return
+        }
+        else if (/(?=.*[a-z])/.test(password) === false){
+          setError("Must be small latter ")
+          return
+         }
+         else if (/(?=.*[A-Z])/.test(password) ===false){
+          setError ("Must be one capital latter")
+          return;
+         }
         createUserWithEmailAndPassword(auth, email, password)
         
   .then((userCredential) => {
