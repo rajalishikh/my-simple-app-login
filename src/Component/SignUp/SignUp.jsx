@@ -55,7 +55,7 @@ const SignUp = () => {
 
     }
     return (
-        <div>
+        <div className="mt-2">
             <h2 className='text-center'>Welcome to signup page </h2>
         <form onSubmit={handleSignUp}>
             <div className="flex justify-center">
@@ -88,7 +88,7 @@ const SignUp = () => {
       </div>
         </form>
         {
-            error&&<p className="text-red-600">{error}</p>
+            error&&<p className="text-red-600 text-center">{error}</p>
         }
         {
           success && <p className="text-green-500 text-center">SignUp successFully complete </p>
