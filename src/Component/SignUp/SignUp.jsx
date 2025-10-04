@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
+import { Link } from "react-router";
 import { auth } from "../../Firebase/Firebase";
 
 const SignUp = () => {
@@ -84,6 +85,7 @@ const SignUp = () => {
           <div className="flex justify-center">
              <input className="btn btn-success " type="submit" value="Submit" />
           </div>
+          <p>You all ready have a account ?   <Link className="text-green-500" to={'/login'}>please Login</Link> </p>
         </div>
       </div>
         </form>
