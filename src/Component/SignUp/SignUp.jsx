@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
@@ -45,7 +45,12 @@ const SignUp = () => {
   .then((userCredential) => {
     // Signed up 
     console.log(userCredential)
-    setSuccess(true)
+    
+    sendEmailVerification(auth.currentUser)
+  .then(() => {
+   setSuccess(true)
+    });
+    
     // ...
   })
   .catch((error) => {
@@ -83,7 +88,7 @@ const SignUp = () => {
           
           <div><a className="link link-hover">Forgot password?</a></div>
           <div className="flex justify-center">
-             <input className="btn btn-success " type="submit" value="Submit" />
+             <input className="btn btn-success " type="submit" value="SignIn" />
           </div>
           <p>You all ready have a account ?   <Link className="text-green-500" to={'/login'}>please Login</Link> </p>
         </div>

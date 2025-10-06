@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase";
 
 const Register = () => {
@@ -14,6 +14,10 @@ const Register = () => {
     // Signed up 
     const user = userCredential.user;
     console.log(user)
+    sendEmailVerification(auth.currentUser)
+  .then(() => {
+    
+    });
     // ...
   })
   .catch((error) => {
