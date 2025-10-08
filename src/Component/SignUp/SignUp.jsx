@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
@@ -16,7 +16,23 @@ const SignUp = () => {
         const email=e.target.email.value 
         const password=e.target.password.value
         const terms=e.target.terms.checked 
+        const DisplayName=e.target.DisplayName.value
+        const PhotoUrl=e.target.PhotoUrl.value
         console.log(password,terms)
+
+        // update the profile 
+
+        const profileUpdate={
+         displayName: DisplayName,
+         photoURL: PhotoUrl
+        }
+
+        updateProfile(auth.currentUser, profileUpdate).then(() => {
+  // Profile updated!
+  // ...
+}).catch((error) => {
+  setError(error)
+});
 
         setError("")
         setSuccess(false)
@@ -76,8 +92,12 @@ const SignUp = () => {
               }
               
             </button>
+            
+            
 
           </div>
+          <input className="input" type="text" name="DisplayName" placeholder="Please write your name" id="" />
+            <input className="input" type="text" name="PhotoUrl"  placeholder="please give your photo link" id="" /><br />
           <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
  
   <label className="label">
