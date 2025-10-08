@@ -86,7 +86,7 @@ const SignUp = () => {
   </label>
 </fieldset>
           
-          <div><a className="link link-hover">Forgot password?</a></div>
+          <button className="btn ">Forgot password</button>
           <div className="flex justify-center">
              <input className="btn btn-success " type="submit" value="SignIn" />
           </div>
