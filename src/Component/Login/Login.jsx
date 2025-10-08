@@ -18,8 +18,15 @@ const Login = () => {
 signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
-    console.log(userCredential.user)
-    setSuccess(true)
+    console.log(userCredential.user.emailVerified)
+    if(!userCredential.user.emailVerified){
+      alert("Please verified your email")
+    }
+    else{
+      setSuccess(true)
+
+    }
+    
     
     // ...
   })
