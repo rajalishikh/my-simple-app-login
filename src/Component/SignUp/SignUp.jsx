@@ -27,12 +27,7 @@ const SignUp = () => {
          photoURL: PhotoUrl
         }
 
-        updateProfile(auth.currentUser, profileUpdate).then(() => {
-  // Profile updated!
-  // ...
-}).catch((error) => {
-  setError(error)
-});
+        
 
         setError("")
         setSuccess(false)
@@ -66,9 +61,19 @@ const SignUp = () => {
   .then(() => {
    setSuccess(true)
     });
+
+  //  update profile 
+  updateProfile(auth.currentUser, profileUpdate).then(() => {
+  // Profile updated!
+  // ...
+}).catch((error) => {
+  console.log(error)
+});
     
-    // ...
+  
   })
+
+  
   .catch((error) => {
     setError(error.message)
     
@@ -96,8 +101,8 @@ const SignUp = () => {
             
 
           </div>
-          <input className="input" type="text" name="DisplayName" placeholder="Please write your name" id="" />
-            <input className="input" type="text" name="PhotoUrl"  placeholder="please give your photo link" id="" /><br />
+          <input className="input" type="text" name="DisplayName" placeholder="Please write your name"  />
+            <input className="input" type="text" name="PhotoUrl"  placeholder="please give your photo link" /><br />
           <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
  
   <label className="label">
